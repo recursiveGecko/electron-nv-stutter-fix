@@ -18,6 +18,8 @@ jobs:
 
       - name: Setup Zig
         uses: goto-bus-stop/setup-zig@v2.1.1
+        with:
+          version: 0.11.0-dev.3971+6bc9c4f71
 
       - name: Build
         run: |

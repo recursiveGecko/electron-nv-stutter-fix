@@ -144,6 +144,11 @@ pub fn main() !u8 {
 
     // Create new profile
     if (create_path) |app_path| {
+        std.debug.print("Deleting any existing profiles for {s}\n", .{app_path});
+        _ = try deleteProfileByName(drs_session, app_path);
+
+        std.debug.print("Creating new profile for {s}\n", .{app_path});
+
         createProfileForAppPath(drs_session, app_path) catch {
             return 20;
         };
