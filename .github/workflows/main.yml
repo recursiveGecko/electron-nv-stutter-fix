@@ -1,4 +1,4 @@
-name: 'Build'
+name: 'Build & Release'
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ on:
   pull_request:
 
 jobs:
-  build:
+  build-release:
     runs-on: windows-2022
     steps:
       - name: Checkout
@@ -22,3 +22,12 @@ jobs:
       - name: Build
         run: |
           zig build -Doptimize=ReleaseSafe
+
+      - name: GH Release
+        uses: softprops/action-gh-release@v0.1.15
+        if: startsWith(github.ref, 'refs/heads/stable')
+        with:
+          files: |
+            zig-out/bin/electron-nv-stutter-fix.exe
+          name: ${{ github.event.repository.updated_at}}
+          draft: true
