@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - stable
+    tags:
+      - "release/*"
   pull_request:
 
 jobs:
@@ -27,9 +29,8 @@ jobs:
 
       - name: GH Release
         uses: softprops/action-gh-release@v0.1.15
-        if: startsWith(github.ref, 'refs/heads/stable')
+        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
             zig-out/bin/electron-nv-stutter-fix.exe
-          name: ${{ github.event.repository.updated_at}}
           draft: true
