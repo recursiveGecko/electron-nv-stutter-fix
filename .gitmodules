@@ -1,0 +1,3 @@
+[submodule "lib/yazap"]
+	path = lib/yazap
+	url = https://github.com/PrajwalCH/yazap
