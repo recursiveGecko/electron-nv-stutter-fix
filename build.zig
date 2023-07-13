@@ -11,10 +11,7 @@ pub fn build(b: *std.Build) !void {
         .optimize = optimize,
     });
     exe.linkLibC();
-    exe.addLibraryPath("lib/nvapi/R535-Developer/amd64");
-    exe.addIncludePath("lib/nvapi/R535-Developer");
-    exe.addIncludePath("inc");
-    exe.linkSystemLibrary("nvapi64");
+    exe.addIncludePath("lib/nvapi/R535-OpenSource");
 
     exe.addAnonymousModule("yazap", .{
         .source_file = .{ .path = "lib/yazap/src/lib.zig" },
