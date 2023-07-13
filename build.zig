@@ -27,7 +27,7 @@ fn buildExe(
     const exe = b.addExecutable(.{
         .name = name,
         .root_source_file = .{ .path = "src/main.zig" },
-        .target = try std.zig.CrossTarget.parse(.{ .arch_os_abi = "x86_64-windows-msvc" }),
+        .target = try std.zig.CrossTarget.parse(.{ .arch_os_abi = "x86_64-windows-gnu" }),
         .optimize = optimize_mode,
     });
     exe.linkLibC();

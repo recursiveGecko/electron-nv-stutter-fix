@@ -8,12 +8,10 @@ const nvapi = nvidia.nvapi;
 var gpa = std.heap.GeneralPurposeAllocator(.{}){};
 var allocator = gpa.allocator();
 
-// These fields should be u32, but translate-C converts hex values to signed integers
-// and it's easier to @bitCast them to u32 at the point of use
 const DriverSetting = struct {
-    id: i32,
+    id: u32,
     name: []const u8,
-    value: i32,
+    value: u32,
 };
 
 // These values were discovered experimentally by manually creating a profile in the
